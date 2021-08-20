@@ -1,0 +1,301 @@
+\documentclass[a4paper]{article}
+
+% symlink to ~/.texinit/default.tex:
+%   ln -s /home/jakob/uni/template.tex /home/jakob/.texinit/default.tex
+
+%-----------------------------------------------------------------------
+% LaTeX packages
+%-----------------------------------------------------------------------
+
+\usepackage[mono=false]{libertine}
+
+\usepackage[english]{babel}
+\selectlanguage{english}
+
+\usepackage{textcomp}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+\usepackage[pdfborderstyle={/S/U/W 1}]{hyperref}
+\usepackage{xspace}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+%\usepackage[utf8]{inputenc}
+
+\usepackage[symbol]{footmisc}
+%\usepackage{indentfirst}
+%\setlength\parindent{0pt} % disable indenting
+
+% German bibliography
+\usepackage{bibgerm}
+\usepackage[square,numbers]{natbib}
+
+\usepackage{array} % allows for things like `>{\bf}c` in tables
+
+\usepackage{fancyhdr}
+
+\usepackage{tablefootnote}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textsc{Interiör: Concept}}
+\rhead{\textsc{Goose Girl Games}}
+%\rhead{\textsc{Erickson, Ruckel, Trojan}}
+%\cfoot{--~\thepage~--}
+\fancyfoot[C]{--~\thepage~--}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \renewcommand*{\headrulewidth}{0pt}
+  \fancyfoot[C]{--~\thepage~--}
+}
+
+\usepackage{titling}
+
+% Footnotes w/ symbols, not numbers
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% Fix `Package Fancyhdr Warning: \headheight is too small (12.0pt): Make it at least 12.37082pt`
+%\setlength{\headheight}{12.38pt}
+
+%-----------------------------------------------------------------------
+% Theorems
+%-----------------------------------------------------------------------
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+%-----------------------------------------------------------------------
+% Macros
+%-----------------------------------------------------------------------
+
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+%-----------------------------------------------------------------------
+
+\begin{document}
+
+%-----------------------------------------------------------------------
+% Title
+%-----------------------------------------------------------------------
+\author{Goose Girl Games}
+\date{August 2021}
+
+\title{\textbf{%
+    Interiör: Concept
+}}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+%\author{Fionn Edward Erickson, Jakob Béla Ruckel und Marie Trojan\\
+%  \normalsize Matrikelnummern: 121588, 120858 und 121067\\
+
+
+%-----------------------------------------------------------------------
+% Content
+%-----------------------------------------------------------------------
+
+\newcommand{\ikea}{\textsc{Eeek}\xspace}
+\newcommand{\smaland}{\textsc{Småland}\xspace}
+
+\section{Premise}
+
+You and your parents go on a typical Saturday \ikea trip,
+but soon, your greatest fear becomes reality:
+Your parents leave you behind at \smaland.
+
+You're trying to leave the store, but to do so you must fight your way
+through several layers of \ikea showrooms and, finally, the warehouse.
+
+\section{Layers/Showrooms}
+
+Each layer is a single showroom floor with one theme.
+Layout and enemy spawns are randomly generated.
+
+\subsection{Elements within a layer}
+
+\subsubsection{Checkpoint}
+
+There's multiple checkpoints with
+pencils, measuring tape and a layout map.
+
+\subsubsection{Cafeteria}
+
+At the end of each layer there's an \ikea cafeteria,
+at which the player can upgrade weapons and buy food.
+
+\subsubsection{Family Section}
+
+Requires \ikea Family Membership Card to enter.
+Has exclusive items, so it's basically a treasure room.
+
+\subsubsection{Boss}
+
+One Boss per layer, chosen at random out of a set of bosses with the
+layer's theme.
+
+\subsection{Types of Layers}
+
+\begin{itemize}
+  \item Intro/Tutorial: \smaland
+  \item Special (at half point?): As-Is Section (Fundgrube).
+    Contains broken zombie versions of previously defeated pieces of
+    furniture.
+  \item Special: Full apartment ($\dots m^2$) showroom.
+    Contains all (previously seen) types of furniture.
+  \item Bathroom.
+    Theme: Water and Electricity.
+  \item Kitchen.
+    Cutlery.
+  \item Bedroom
+  \item Children's Room
+  \item Garden/Plants
+  \item Living Room
+  \item Carpets, Blankets, etc.
+  \item Office
+  \item Lighting
+  \item End Boss: Warehouse
+\end{itemize}
+
+\subsection{Level Generation}
+
+At the core, a level is a small kind of maze.
+Ideas and requirements:
+\begin{itemize}
+  \item Entrance and exit (the latter with the cafeteria).
+  \item Combinations of an item and an enemy (or group of enemies) that
+    is best defeated with that item.
+  \item Shortcuts:  Can be taken, but player will have to fight enemies
+    with non-optimal weapons.
+\end{itemize}
+
+\section{Movement}
+
+Dash/Dodge:
+Player kind of stumbles after a dash, meaning there is a small cooldown
+before they can move again.
+
+When dashing onto a bed, the player could be sent flying a short
+distance.  A yellow bag could serve as a parachute.
+
+\section{Enemies/Furniture}
+
+\subsection{Types}
+
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{lllll}
+    \toprule
+    \textbf{Name} & \textbf{Type} & \textbf{Movement} & \textbf{Attack}
+                  & \textbf{Death}
+     \\
+    \midrule
+    Kallax & shelf & rolls sideways & quartering & falls into pieces? \\
+    Lack & small table & gallop & ramming & ? \\
+    ? & lamp & small jumps & explodes & dies when attacking \\
+    ? & spotlight & small jumps & laser beam & ? \\
+    ? & carpet & slides across floor & makes you trip over it & 
+        only with fire\tablefootnote{%
+          This means you'll have a fast-moving, burning carpet sliding
+          around, which may ignite other furniture or yourself.
+        } \\
+    ? & cutlery & flying swarm & pokes you & melee? better just run
+    away? \\
+    ? & couch & slow tank & eats you & dead couch can be used as cover\\
+    Markus & office chair & very fast & spins quickly & ? \\
+    \bottomrule
+  \end{tabular}
+  \caption{Enemy Furniture}
+  \label{tab:furniture}
+\end{table}
+
+\subsection{Behavior}
+
+\section{Items}
+
+\subsection{Basic Resources}
+
+\begin{itemize}
+  \item \ikea Pencils.
+    Act as ammunition and currency.
+  \item Food: Restores health, perhaps gives status effects?
+    Types: Köttbullar, Hot Dogs, Elk Noodles, Free Refill Soda Cups,
+    Kanelbullar, Almond Cake.
+  \item \ikea Family Membership Cards.
+  \item Yellow Bags
+  \item Dolly (Sackkarre)
+  \item Hex Key
+\end{itemize}
+
+\subsection{Weapons}
+
+\subsubsection{Melee}
+
+\ikea pencils probably aren't very effective.
+Perhaps some other \ikea item, or a sword crafted from pencils?
+
+\subsubsection{Crossbow}
+
+A simple crossbow built with \ikea pencils that shoots \ikea pencils.
+There's two possible types of upgrades:
+The crossbow itself can be upgraded (e.g. made to shoot faster or more
+accurate), and an additional item can be attached to change the way it
+works.
+
+\begin{itemize}
+  \item Laser Pointer/Spotlight: Does Lamp-type damage.
+  \item Mirror: Reflects light, can be used to defeat furniture with
+    lamps (or lamps themselves).
+  \item Pencil sharpener: Increases damage dealt, projectile speed.
+\end{itemize}
+
+\subsection{Obtaining Items}
+
+There may be a crafting system (with the cafeterias being the crafting
+stations) and/or shops (also cafeteria).
+
+\section{Game Modes}
+
+\begin{itemize}
+  \item Main: Clear all layers (\smaland, one of each type in random
+    order, warehouse).
+  \item Arcade: Special showroom with waves of enemies.
+\end{itemize}
+
+\section{Artstyle}
+
+Pixel art,
+isometric perspective.
+
+\section{UI}
+
+\subsection{Main Menu}
+
+\ikea entrance, player w/ parents may enter parts of store to choose
+game mode.
+
+%-----------------------------------------------------------------------
+%\vfill
+%\noindent
+%\rule{\textwidth}{0.4pt}
+%
+%\bibliographystyle{natdin}
+%\bibliography{refs} % Entries are in the "refs.bib" file
+%-----------------------------------------------------------------------
+\end{document}
