@@ -15,7 +15,10 @@ public class Explodable : MonoBehaviour {
     }
 
     void Explode() {
-        Instantiate(explodedPrefab, transform.position, transform.rotation);
+        //var parentscale = transform.localScale;
+        //GameObject exploded = Instantiate(explodedPrefab, transform.position, transform.rotation);
+        Instantiate(explodedPrefab, transform.position, transform.rotation, transform.parent);
+        //exploded.transform.localScale = parentscale;
         Destroy(gameObject);
     }
 
