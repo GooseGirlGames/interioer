@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 6580947433127350678}
   - component: {fileID: 6580947433127350681}
   m_Layer: 0
-  m_Name: bobby
+  m_Name: Shelf_bobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,8 +718,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.81864244, y: 3.1264572, z: 2.0137997}
-  m_Center: {x: -0.0085092485, y: 1.4453449, z: -0.02754736}
+  m_Size: {x: 1.3523383, y: 3.1264572, z: 2.0137997}
+  m_Center: {x: 0.2583387, y: 1.4453449, z: -0.02754736}
 --- !u!114 &6580947433127350681
 MonoBehaviour:
   m_ObjectHideFlags: 0
