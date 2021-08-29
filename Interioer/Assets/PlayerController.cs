@@ -46,13 +46,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateRotation() {
-        Plane ground = new Plane(Vector3.up, 0);
+        Plane ground = new Plane(Vector3.down, transform.position.y);
 
         float distance;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (ground.Raycast(ray, out distance)) {
             var lookAtPosition = ray.GetPoint(distance);
-            lookAtPosition.y = transform.position.y;  // Keep player upright
             var relativePos = lookAtPosition - transform.position;
             transform.rotation = Quaternion.LookRotation(relativePos);
         }
