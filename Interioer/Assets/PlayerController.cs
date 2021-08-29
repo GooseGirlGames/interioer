@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private float speed = 20.0f;
+    private float speed = 12.0f;
     private Rigidbody rb;
     private float movementSmoothing = .01f;
     
