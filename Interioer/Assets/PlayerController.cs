@@ -27,8 +27,14 @@ public class PlayerController : MonoBehaviour {
             movement.y
         );
         var zero = Vector3.zero;
-        rb.velocity = Vector3.SmoothDamp(
+        var y = rb.velocity.y;
+        var newVelocity = Vector3.SmoothDamp(
             rb.velocity, targetVelocity, ref zero, movementSmoothing
+        );
+        rb.velocity = new Vector3(
+            newVelocity.x,
+            y,
+            newVelocity.z
         );
         Debug.Log("???");
         Debug.Log(movementRaw);
