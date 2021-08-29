@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public float lookRadius = 10f;
     public bool playerInSightRange;
     public Transform target;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     public LayerMask whatIsGround, whatIsPlayer;
 
 
@@ -17,12 +17,13 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        target = GetComponent<Transform>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(whatIsPlayer);
         playerInSightRange = Physics.CheckSphere(transform.position, lookRadius, whatIsPlayer);
         if (playerInSightRange) Chasing();
 /*         target = GetComponent<Transform>();
@@ -33,12 +34,13 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Chasing(){
+        Debug.Log(target.position);
         agent.SetDestination(target.position);
     }
 
-/*     void OnDrawGizmos()
+     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, lookRadius);
-    } */
+    }
 }
