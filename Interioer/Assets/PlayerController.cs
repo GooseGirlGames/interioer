@@ -38,10 +38,14 @@ public class PlayerController : MonoBehaviour {
             y,
             newVelocity.z
         );
+
+
+
+        UpdateRotation();
     }
 
     void Update() {
-        UpdateRotation();
+        //UpdateRotation();
 
         if (Input.GetButtonDown("Jump") && (Mathf.Abs(rb.velocity.y) < JUMP_EPSILON)) {
             rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
