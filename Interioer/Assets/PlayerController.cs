@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
     private float speed = 12.0f;
     private Rigidbody rb;
     private float movementSmoothing = .01f;
+    private float jumpHeight = 120.0f;
+    private const float JUMP_EPSILON = 0.01f;
     
     void Start() {
         rb = GetComponent<Rigidbody>();        
@@ -36,13 +38,15 @@ public class PlayerController : MonoBehaviour {
             y,
             newVelocity.z
         );
-        Debug.Log("???");
-        Debug.Log(movementRaw);
-        Debug.Log(movement);
     }
 
     void Update() {
         UpdateRotation();
+
+        if (Input.GetButtonDown("Jump") && (Mathf.Abs(rb.velocity.y) < JUMP_EPSILON)) {
+            rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
+        }
+
     }
 
     private void UpdateRotation() {
