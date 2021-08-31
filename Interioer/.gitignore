@@ -25,6 +25,11 @@
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
+# Meta of ignored blender files
+*.pyc.meta
+*.blend[1-9].meta
+__pycache__.meta
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 
