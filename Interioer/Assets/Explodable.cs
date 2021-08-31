@@ -14,17 +14,20 @@ public class Explodable : MonoBehaviour {
         
     }
 
-    void Explode() {
+    void Explode(GameObject projectile = null) {
         //var parentscale = transform.localScale;
         //GameObject exploded = Instantiate(explodedPrefab, transform.position, transform.rotation);
         Instantiate(explodedPrefab, transform.position, transform.rotation, transform.parent);
         //exploded.transform.localScale = parentscale;
         Destroy(gameObject);
+        if (projectile) {
+            Destroy(projectile);
+        }
     }
 
     private void OnCollisionEnter(Collision col) {
         if (col.gameObject.CompareTag("Projectile")) {
-            Explode();
+            Explode(col.gameObject);
             Debug.Log("Collision!");
         }
     }
